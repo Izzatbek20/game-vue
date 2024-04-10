@@ -29,7 +29,6 @@ function shuffleArray(array) {
 }
 
 export const makeOptions = (arrayData, current_item, index) => {
-
     const data = [current_item.title]
     const arrayData_clone = arrayData.map((element) => {
         return {
@@ -37,18 +36,24 @@ export const makeOptions = (arrayData, current_item, index) => {
         }
     })
     arrayData_clone.splice(index, 1)
+
     const arrayData_clone_random = shuffleArray(arrayData_clone)
     for (let index = 0; index < 1; index++) {
         const element = arrayData_clone_random[index];
 
         data.push(element.title)
     }
-    
-    const new_random_element = [];
-    for (let index = 0; index < data.length; index++) {
-        const element = data[Math.floor(Math.random() * data.length)];
 
-        new_random_element.push(element.title)
+    const new_random_element = [];
+    const arr_index = range(0, data.length)
+    for (let index = 0; index < data.length; index++) {
+        const random_int = Math.floor(Math.random() * arr_index.length);
+        if (arr_index.includes(random_int) && arr_index.length > 1) {
+            removeItemFromArray(arr_index, random_int)
+            new_random_element.push(data[random_int])
+        } else {
+            new_random_element.push(data[arr_index[0]])
+        }
     }
 
     return new_random_element;

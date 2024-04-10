@@ -20,7 +20,7 @@
             </div>
             <div class="space-y-3">
 
-              <div v-for="data, index in current_data.qOptions" :key="index" @click="selectQuestion(data, index)"
+              <div v-for="(data, index) in current_data.qOptions" :key="index" @click="selectQuestion(data, index)"
                 class="group relative flex flex-row justify-between items-center shadow-sm px-5 py-3 xs:max-sm:px-2 xs:max-sm:py-1 xs:max-sm:text-sm border rounded-lg w-full cursor-pointer font-medium transition hover:scale-105 hover:bg-[#41C9E2] hover:text-white">
                 <div class="overflow-hidden">
                   <div
